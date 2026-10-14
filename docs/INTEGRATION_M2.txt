@@ -1,0 +1,33 @@
+MEMBER 2 - MENTORSHIP & CAREER QUEST
+
+Files added:
+  CareerQuestMatcher.java
+  MentorshipModule.java
+  MentorshipPanel.java
+  MentorshipRepository.java
+  M2_SCHEMA.sql
+
+1. Put all four .java files in the same folder as Member 1's Java files.
+2. Run the main schema.sql first in MySQL. M2_SCHEMA.sql contains the Member 2 tables; run it after schema.sql if you want to create them manually. The repository also creates these tables automatically when the app starts with a working database.
+3. In AppContext.init(), after auth = new AuthService(users); add these lines:
+       matcher = new CareerQuestMatcher();
+       modules.add(new MentorshipModule());
+   Do not add the same module line more than once. Coordinate this shared-file change with Member 1.
+4. Compile from the project folder:
+   Without MySQL connector (in-memory demo): javac *.java
+   Then run: java Main
+   With MySQL connector on Windows:
+     javac -cp ".;mysql-connector-j-x.x.x.jar" *.java
+     java -cp ".;mysql-connector-j-x.x.x.jar" Main
+   With MySQL connector on Linux/macOS, replace the classpath semicolon with a colon.
+5. Demo accounts from Member 1's contract:
+   Student: student1 / student123
+   Alumni:  aarav / alumni123 (other alumni first-name usernames may also work)
+6. Student features: mentor recommendations, send request, check request status, create roadmaps, add/complete milestones, start/complete quests, earn progress badges.
+7. Alumni features: view incoming requests and accept/decline pending requests.
+
+NOTES:
+- Keep Member 1's existing files unchanged except the two integration lines in AppContext.java.
+- DBConnection.java must contain your own local MySQL password if using MySQL.
+- If the application is running in in-memory mode, new requests/roadmaps/quests last only while the application is running. Use MySQL for persistent data.
+- Matching score weights: skills 40%, industry 25%, interests 20%, goal 15%.

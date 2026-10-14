@@ -1,0 +1,25 @@
+MEMBER 3 - OPPORTUNITY ARENA (Jobs, Internships, Applications, Skill Gap, Referrals)
+
+Files added (all go in the SAME folder as Member 1 / Member 2 files - no packages):
+  Job.java  Application.java  Referral.java  SkillMatcher.java
+  JobRepository.java  ApplicationRepository.java  ReferralRepository.java
+  JobBoardPanel.java  JobBoardModule.java  M3_SCHEMA.sql
+
+1. In AppContext.init(), replace the commented placeholder line
+       // modules.add(new JobBoardModule());       // Member 3
+   with
+       modules.add(new JobBoardModule());          // Member 3
+   (keep Member 2's two lines exactly as they are). This is the only existing file that changes.
+2. Database: run schema.sql, then M3_SCHEMA.sql (optional - the app also creates the Member 3 tables
+   and 8 sample jobs automatically on first run, same as Member 2's repository).
+3. Compile and run from the project folder:
+   Without MySQL (in-memory demo):   javac *.java        then   java Main
+   With MySQL on Windows:  javac -cp ".;mysql-connector-j-x.x.x.jar" *.java
+                           java  -cp ".;mysql-connector-j-x.x.x.jar" Main
+   (Linux/macOS: use ":" instead of ";")
+4. Demo accounts: student1 / student123   |   aarav / alumni123 (any alumni first name)
+   IMPORTANT: student1 starts with NO skills. Log in, open My Profile, enter skills such as
+   "Java,Python,SQL,Git" and Save before using Why am I a match / Skill Gap.
+5. Tables owned by Member 3: jobs, applications, referrals, job_actions (Save/Skip choices).
+   All person columns are foreign keys to users(id), as required by the database contract.
+6. In-memory mode: data lasts only while the app is running (same as Member 2).
